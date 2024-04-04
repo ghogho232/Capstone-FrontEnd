@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.outer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1920;
+  height:500;
+}
+
+#recommend, #fitting{
+  padding: 30px;
+  font-size: 30pt; 
+}
