@@ -1,9 +1,9 @@
 import React from "react";
 
 function Button(props){
-    const{name, onClick} = props;
+    const{title, onClick, id, className, style} = props;
     return (
-        <button onClick={onClick}>{name}</button>
+        <button className={className} id={id}onClick={onClick}style={style}>{title}</button>
       );
 }
 export default Button;
