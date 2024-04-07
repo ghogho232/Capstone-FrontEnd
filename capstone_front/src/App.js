@@ -6,12 +6,16 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Main from './component/page/MainPage';
+import Loading from "./component/page/Loading";
+import Listpage from "./component/page/ListPage";
+
 function App(props) {
   return (
     <BrowserRouter>
       <Routes>
           <Route index element={<Main />} />
-
+          <Route path="loading" element={<Loading />} />
+          <Route path="Listpage" element={<Listpage />} />
       </Routes>
   </BrowserRouter>
   );
