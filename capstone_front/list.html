@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <title>Product List</title>
+    <style>
+        li {
+            display: inline-block;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label {
+            padding: 10px;
+            display: block;
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        label:before {
+            background-color: white;
+            color: white;
+            content: " ";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 28px;
+            transition-duration: 0.4s;
+            transform: scale(0);
+        }
+
+        :checked+label {
+            border-color: #ddd;
+        }
+
+        :checked+label:before {
+            content: "✓";
+            background-color: #840418;
+            transform: scale(1);
+        }
+
+        .nextbutton {
+            background-color: #fff;
+            border: none;
+            color: #840418;
+            padding: 10px 20px;
+            font-family: 'Moirai One', cursive;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 50px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        :checked+label img {
+            transform: scale(0.9);
+            z-index: -1;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            /*background-color: #f1f1f1;*/
+            margin: 0;
+            padding: 0;
+            overflow: scroll;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        .works_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        .works_main {
+            position: relative;
+            text-align: center;
+        }
+
+        .works_main div {
+            width: 230px;
+            height: 331px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .works_main img {
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out, filter 1s ease-in-out;
+        }
+
+        .works_main:hover img {
+            transform: scale(1.2);
+            transform-origin: center;
+            filter: brightness(10%);
+            touch-action: auto;
+            transition: transform 1s ease-in-out, filter 1s ease-in-out;
+        }
+
+        .works_main p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 0;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .works_main:hover p {
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toolbar" display = flex; justifyContent = space-between alignItems = center>
+        <p>CLOTHZ</p>
+        <a href="http://smtown.com/"><img src="img/profile.png" width=40 height=40 /></a>
+      </div>
+    <h1 style="font-family: 'Moirai One'; color: #840418; font-size: 40pt; text-align: center;">Pick what you want!</h1>
+    <table class='list' style="position: relative;">
+        <tr>
+            <td>
+                <li>
+                    <div class="works_main">
+                        <div class="works_container">
+                            <input type=checkbox id="op1"> <label for="op1">
+                                <img src="img/ike.gif">
+                        </div>
+                        <p>ike</p>
+                </li></label></div>
+            </td>
+            <td>
+                <li>
+                    <div class="works_main">
+                        <div class="works_container">
+                            <input type=checkbox id="op2"> <label for="op2">
+                                <img src="img/ike2.gif">
+                        </div>
+                        <p>ike</p>
+                </li></label></div>
+            </td>
+            <td>
+                <li>
+                    <div class="works_main">
+                        <div class="works_container">
+                            <input type=checkbox id="op3"> <label for="op3">
+                                <img src="img/ike3.gif">
+                        </div>
+                        <p>ike</p>
+                </li></label></div>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="img/ike4.gif" alt="Product 3"></td>
+            <td><img src="img/ike5.gif" alt="Product 4"></td>
+            <td><img src="img/ike5.gif" alt="Product 5"></td>
+        </tr>
+        <tr>
+            <td><img src="img/ike.gif" alt="Product 6"></td>
+            <td><img src="img/ike2.gif" alt="Product 7"></td>
+            <td><img src="img/ike5.gif" alt="Product 8"></td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+    <div style="text-align: right;"><input type="submit" value="> > > NEXT" class="nextbutton"></div>
+</body>
+
+</html>
