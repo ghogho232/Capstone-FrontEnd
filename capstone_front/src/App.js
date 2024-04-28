@@ -9,7 +9,8 @@ import './App.css';
 import Main from './component/page/MainPage';
 import Loading from "./component/page/Loading";
 import Listpage from "./component/page/ListPage";
-
+import LogInPage from "./component/page/LogInPage";
+import RegisterPage from "./component/page/RegisterPage";
 function App(props) {
   return (
     <BrowserRouter>
@@ -17,6 +18,8 @@ function App(props) {
           <Route index element={<Main />} />
           <Route path="loading" element={<Loading />} />
           <Route path="Listpage" element={<Listpage />} />
+          <Route path="LogInPage" element={<LogInPage />} />
+          <Route path="RegisterPage" element={<RegisterPage />} />
       </Routes>
   </BrowserRouter>
 

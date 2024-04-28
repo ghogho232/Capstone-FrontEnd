@@ -1,107 +1,96 @@
 import React from "react";
 import "../CSS/List.css";
+import { useEffect } from "react";
+import Toolbar from "../ui/Toolbar";
+import RecommendItem from "../ui/RecommendItem";
 
 function MainPage() {
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName('title')[0];
+    titleElement.innerHTML = `List`;
+}, []);
   return (
     <div className = "main">
-      <div className="toolbar">
-        <a href="http://localhost:3000"><p>CLOTHZ</p></a>
-        <a href="about:blank"><img src="img/profile.png" width={40} height={40} /></a>
-      </div>
+      <Toolbar />
       <div className="title"> Pick what you want!</div>
-      <div className="list">
+      <input type = "button" value = "이미지 업로드" className="recommend" />
+      <div className="list" type="form">
         <table>
           <tbody>
             <tr>
-              <td>
-                <li>
-                  <div className="works_main">
-                    <div className="works_container">
-                      <input type="checkbox" id="op1" />
-                      <label htmlFor="op1">
-                        <img src="img/keyword (1).png" alt="Product 1" />
-                      </label>
-                    </div>
-                    <p>1</p>
-                  </div>
-                </li>
-              </td>
-              <td>
-                <li>
-                  <div className="works_main">
-                    <div className="works_container">
-                      <input type="checkbox" id="op2" />
-                      <label htmlFor="op2">
-                        <img src="img/keyword (2).png" alt="Product 2" />
-                      </label>
-                    </div>
-                    <p>2</p>
-                  </div>
-                </li>
-              </td>
-              <td>
-                <li>
-                  <div className="works_main">
-                    <div className="works_container">
-                      <input type="checkbox" id="op3" />
-                      <label htmlFor="op3">
-                        <img src="img/keyword (3).png" alt="Product 3" />
-                      </label>
-                    </div>
-                    <p>3</p>
-                  </div>
-                </li>
-              </td>
+              <RecommendItem
+                id="op1"
+                htmlFor="op1"
+                src="img/keyword (1).png"
+                alt="Product 1"
+                script="봄 스타일 추천"
+              />
+              <RecommendItem
+                id="op2"
+                htmlFor="op2"
+                src="img/keyword (2).png"
+                alt="Product 2"
+                script="스트릿"
+              />
+              <RecommendItem
+                id="op3"
+                htmlFor="op3"
+                src="img/keyword (3).png"
+                alt="Product 3"
+                script="아메카지"
+              />
             </tr>
             <tr>
-            <td>
-                <li>
-                  <div className="works_main">
-                    <div className="works_container">
-                      <input type="checkbox" id="op4" />
-                      <label htmlFor="op4">
-                        <img src="img/keyword (4).png" alt="Product 4" />
-                      </label>
-                    </div>
-                    <p>4</p>
-                  </div>
-                </li>
-              </td>
-              <td>
-                <li>
-                  <div className="works_main">
-                    <div className="works_container">
-                      <input type="checkbox" id="op5" />
-                      <label htmlFor="op5">
-                        <img src="img/keyword (5).png" alt="Product 5" />
-                      </label>
-                    </div>
-                    <p>5</p>
-                  </div>
-                </li>
-              </td>
-              <td>
-                <li>
-                  <div className="works_main">
-                    <div className="works_container">
-                      <input type="checkbox" id="op6" />
-                      <label htmlFor="op6">
-                        <img src="img/keyword (6).png" alt="Product 6" />
-                      </label>
-                    </div>
-                    <p>6</p>
-                  </div>
-                </li>
-              </td>
+              <RecommendItem
+                id="op4"
+                htmlFor="op4"
+                src="img/keyword (4).png"
+                alt="Product 4"
+                script="스포티"
+              />
+              <RecommendItem
+                id="op5"
+                htmlFor="op5"
+                src="img/keyword (5).png"
+                alt="Product 5"
+                script="청량한 여름옷"
+              />
+              <RecommendItem
+                id="op6"
+                htmlFor="op6"
+                src="img/keyword (6).png"
+                alt="Product 6"
+                script="럭비셔츠"
+              />
             </tr>
             <tr>
-              <td><img src="img/ike.gif" alt="Product 7" /></td>
-              <td><img src="img/ike2.gif" alt="Product 8" /></td>
-              <td><img src="img/ike5.gif" alt="Product 9" /></td>
+              <RecommendItem
+                id="op7"
+                htmlFor="op7"
+                src="img/keyword (7).png"
+                alt="Product 7"
+                script="톤다운"
+              />
+              <RecommendItem
+                id="op8"
+                htmlFor="op8"
+                src="img/keyword (8).png"
+                alt="Product 8"
+                script="MZ 오피스"
+              />
+              <RecommendItem
+                id="op9"
+                htmlFor="op9"
+                src="img/keyword (9).png"
+                alt="Product 9"
+                script="데일리 캐주얼"
+              />
             </tr>
           </tbody>
         </table>
       </div>
+      <div className = "prompt"> Or..You can type it ! </div>
+        <textarea placeholder="Type your keyword" type="input" className="inputbox"/>
       <div><input type="submit" value="> > > NEXT" className="nextbutton" /></div>
     </div>
   );

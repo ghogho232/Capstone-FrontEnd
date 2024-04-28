@@ -30,6 +30,37 @@
     margin-bottom: 10%;
 }
 
+.prompt {
+    position: absolute;
+    font-Family: 'Moirai One';
+    color: #840418;
+    font-Size: 40pt;
+    font-Weight: bold;
+    text-Align: center;
+    margin-top: 190%;
+    margin-bottom: 10%;
+}
+
+.inputbox {
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    font-size: 15px;
+    border: none;
+    background-color: #ddd;
+    resize: none;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    align-self: center;
+    margin-top: 230%;
+    margin-left: -72%;
+    margin-bottom: 10%;
+}
+
+.inputbox:focus {
+    outline: none;
+}
+
 .list {
     list-style: none;
     position: absolute;
@@ -88,7 +119,7 @@ label:before {
 .nextbutton {
     /*background-color: #fff;*/
     position: absolute;
-    top: 1700px;
+    top: 1600px;
     left: 700px;
     border: none;
     color: #840418;
