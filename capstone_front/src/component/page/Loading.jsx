@@ -1,7 +1,12 @@
 import React from 'react';
 import '../CSS/Loading.css'; 
+import { useEffect } from 'react';
 
 function Loading() {
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName('title')[0];
+    titleElement.innerHTML = `Loading...`;
+}, []);
   return (
     
     <div className="loading-screen">
