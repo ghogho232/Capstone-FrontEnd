@@ -25,7 +25,7 @@ const Toolbar= () => {
             style={{backgroundColor: "transparent", border: "none", cursor: "pointer", fontSize: "15pt"}}
         />
         <Button
-            title = <img src="img/profile.png" alt="Profile" width={40} height={40} />
+            title = < img src="img/profile.png" alt="Profile" width={40} height={40} />
             onClick={() => {
                 navigate('/profile');
             }}

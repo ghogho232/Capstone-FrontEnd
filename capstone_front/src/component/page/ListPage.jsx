@@ -1,20 +1,61 @@
 import React from "react";
 import "../CSS/List.css";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import RecommendItem from "../ui/RecommendItem";
+import Button from "../ui/Button";
 
 function MainPage() {
+  const [imgFile, setImgFile] = useState("");
+  const imgRef = React.useRef(null);
+
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
     titleElement.innerHTML = `List`;
-}, []);
+  }, []);
+
+ 
+  const handleButtonClick = e => {
+    imgRef.current.click();
+  };
+
+
+  const previewImage = () => {
+    if (imgRef.current && imgRef.current.files) {
+      const img = imgRef.current.files[0];
+      setImgFile(img);
+
+      //이미지 미리보기 기능
+      const reader = new FileReader();
+      reader.readAsDataURL(img);
+      reader.onload = () => {
+        setImgFile(reader.result);
+      };
+    }
+  };
+
   return (
-    <div className = "main">
+    <div className="main">
       <Toolbar />
       <div className="title"> Pick what you want!</div>
-      <input type = "button" value = "이미지 업로드" className="recommend" />
-      <div className="list" type="form">
+      <React.Fragment>
+        <Button
+          title='이미지 업로드'
+          className='recommend'
+          onClick={handleButtonClick}
+          style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
+        />
+        <form method="post" action="url">
+          <input type="file" multiple={true} id="fileUpload" ref={imgRef} onChange={previewImage} style={{ display: "none" }}></input>
+        </form>
+        <img
+          src={imgFile ? imgFile : 'img/profile.png'}
+          alt="이미지 업로드"
+          style={{ width: "60px", height: "60px", objectFit: "contain" }}
+        />
+      </React.Fragment>
+      <form method="post" action="url" id="list" className="list">
         <table>
           <tbody>
             <tr>
@@ -88,10 +129,11 @@ function MainPage() {
             </tr>
           </tbody>
         </table>
-      </div>
-      <div className = "prompt"> Or..You can type it ! </div>
-        <textarea placeholder="Type your keyword" type="input" className="inputbox"/>
-      <div><input type="submit" value="> > > NEXT" className="nextbutton" /></div>
+
+        <div className="prompt"> Or..You can type it ! </div>
+        <textarea placeholder="Type your keyword" type="input" className="inputbox" />
+        <div><input type="submit" value="> > > NEXT" id="nextButton" className="nextbutton" /></div>
+      </form>
     </div>
   );
 }

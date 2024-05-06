@@ -12,21 +12,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
-.toolbar p {
-    margin: 0;
-}
-
 .login-wrapper {
     width: 400px;
     height: 350px;
-    padding: 40px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -45,6 +34,7 @@
     box-sizing: border-box;
     margin-bottom: 16px;
     border-radius: 6px;
+    border: none;
     background-color: #F8F8F8;
 }
 
@@ -57,6 +47,7 @@
     font-size: 16px;
     background-color: #840418;
     margin-top: 20px;
+    border: none;
 }
 
 #login-form input[type="checkbox"] {

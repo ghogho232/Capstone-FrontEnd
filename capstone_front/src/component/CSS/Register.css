@@ -1,76 +1,106 @@
-
-
 .registerPage {
     background-color: #f1f1f1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-size: 16px;
+    font-size: 12pt;
     font-family: 'Roboto', sans-serif;
+    margin-top: 10%;
 }
 
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+.register-label {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 30px;
 }
 
-.register-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+tr{
+    width: 100%;
+    border-spacing: 0;
+}
+
+th{
+    display: inline-block;
+    width: max-content;
+    text-align: left;
+    border-spacing: 0;
+}
+
+td {
+    text-align: left;
+    align-self: center;
+    align-content: center;
+    width: 100%;
+    border-spacing: 0;
+
 }
 
 h1 {
     font-family: 'Moirai One';
     color: #840418;
-    font-size: 40pt;
+    font-size: 50pt;
     text-align: center;
-    padding: 50px;
+    padding: 20px;
 }
 
-#register-form {
-    padding: 10px;
-    display: block;
+#register-wrapper {
     position: relative;
-    margin: 10px;
-    cursor: pointer;
-}
-tr{
+    display: center;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    padding: auto;
+    background-color: #f1f1f1;
     width: 100%;
 }
 
-td {
+#register-form {
+    position: relative;
+    align-items: left;
     text-align: left;
-    margin: 20pt;
+    cursor: pointer;
+    border-spacing: 0;
+    padding-left: 20px;
+}
+
+.Sign {
+    border: none;
+    position: relative;
 }
 
 #register-form input {
-    width: 70%;
+    width: 100%;
     height: 30px;
-    padding: 0 10px;
     box-sizing: border-box;
     border-radius: 6px;
     background-color: #ffffff;
+    border: none;
 }
 #register-form select {
-    width: 100;
+    width: 30%;
     height: 100%;
+    display: inline;
+    border: none;
 }
 #register-form input[type="email"] {
-    width: 50%;
+    width: 60%;
+    border: none;
+    align-content:flex-end
 }
 
-
 #register-form input[type="submit"] {
+    position: flex;
     color: #fff;
-    font-size: 16px;
+    font-size: 12pt;
     background-color: #840418;
-    margin-top: 20px;
-    padding-left: 0px;
-    width: 200px;
+    padding-left:10%;
+    padding-right:10%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 40%;
+    height: 20%;
+    text-align: center;
 }
