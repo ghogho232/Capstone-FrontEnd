@@ -5,9 +5,49 @@ import Button from "../ui/Button";
 import Toolbar from "../ui/Toolbar";
 import { useEffect } from "react";
 import UploadButton from "../ui/FileInput";
+import axios from 'axios';
+import { useState } from "react";
+
+const Register = () => {
+    const navigate = useNavigate();
+
+
+}
 
 function RegisterPage() {
     const navigate = useNavigate();
+    const [emailinput, setEmailinput] = useState("");    
+    const [usernameinput, setUsernameinput] = useState("");
+    const [passwordinput, setPasswordinput] = useState("");
+    const [passwordcheck, setPasswordcheck] = useState("");
+    const [message, setMessage] = useState("");
+
+    const registeraxios = () => {
+        axios.post(
+            "http://15.165.131.15:8080/api/signup",
+            {
+                email: emailinput,
+                nickname: usernameinput,
+                password: passwordinput
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "accept": "*/*"
+                }
+            }
+        ).then((res) => {
+            console.log(res);
+            alert("회원가입이 완료되었습니다. 로그인해주세요.");
+            if (res.status === 200) {
+                navigate("/");
+            }
+        }).catch((err) => {
+            setMessage(err.response.data.message);
+            console.log(err);
+        });
+    };
+
     useEffect(() => {
         const titleElement = document.getElementsByTagName('title')[0];
         titleElement.innerHTML = `Register`;
@@ -31,12 +71,15 @@ function RegisterPage() {
                 <UploadButton />
             </div>
             <form>
-                <form method="post" action="서버의url" id="register-form">
+                <form id="register-form">
                     <table>
                         <tr>
                             <th>
                                 <label htmlfor="email" className="register-label">이메일</label> </th>
-                            <td><input type="email" id="email" name="email" /> @
+                            <td><input type="email" id="email" name="email" 
+                                onChange={(e) => {
+                                        setEmailinput(e.target.value);
+                                }}/> @
                                 <select id="emailselect">
                                     <option value="first">선택</option>
                                     <option value="gmail">gmail.com</option>
@@ -49,32 +92,37 @@ function RegisterPage() {
 
                         <tr>
                             <th>
-                                <label htmlFor="userid" className="register-label">아이디</label></th>
-                            <td><input type="text" id="Id" className="Id" /></td>
-                            <input type="button" id="duplicate" name="중복확인" value="중복확인" onClick={duplicatecheck}></input>
-                        </tr>
-
-                        <tr>
-                            <th>
                                 <label htmlFor="name" className="register-label">이름</label></th>
-                            <td><input type="text" id="Name" name="name" /></td>
+                            <td><input type="text" id="Name" name="name" 
+                            onChange={(e) => {
+                                setUsernameinput(e.target.value);
+                            }}/>
+                            </td>
                         </tr>
 
                         <tr>
                             <th>
                                 <label htmlFor="password" className="register-label">비밀번호</label></th>
-                            <td><input type="password" id="pw" name="pw" /></td>
+                            <td><input type="password" id="pw" name="pw" 
+                            onChange={(e) => {
+                                setPasswordinput(e.target.value);
+                            }}/>
+                            </td>
                         </tr>
 
-                        <tr>
+                        {/* <tr>
                             <th>
                                 <label htmlFor="passwordcheck" className="register-label">비밀번호 확인</label></th>
-                            <td><input type="password" id="PwCheck" name="pwcheck" /></td>
+                            <td><input type="password" id="PwCheck" name="pwcheck" 
+                            onChange={(e) => {
+                                setPasswordcheck(e.target.value);
+                            }}/>
+                            </td>
                             <input type="button" id="checkpw" name="확인" value="확인" onClick={pwcheck}></input>
-                        </tr>
+                        </tr> */}
 
                     </table>
-                    <input type="submit" value="Sign" className="Sign" />
+                    <input type="button" value="Sign" className="Sign" onClick={registeraxios}/>
                 </form>
             </form>
         </div>

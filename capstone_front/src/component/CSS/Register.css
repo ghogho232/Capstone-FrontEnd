@@ -91,7 +91,7 @@ h1 {
     align-content:flex-end
 }
 
-#register-form input[type="submit"] {
+#register-form input[type="button"] {
     position: flex;
     color: #fff;
     font-size: 12pt;
