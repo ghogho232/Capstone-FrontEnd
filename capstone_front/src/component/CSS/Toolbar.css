@@ -1,6 +1,18 @@
 .toolbar {
+    position: fixed;
+    scroll-margin: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    padding: 18px;
+    opacity: 0.7;
+    color: black;
+    background: white;
+    box-shadow: black 0px 0px 10px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    z-index: 100;
 }

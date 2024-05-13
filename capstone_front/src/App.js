@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
     BrowserRouter,
@@ -11,6 +10,7 @@ import Loading from "./component/page/Loading";
 import Listpage from "./component/page/ListPage";
 import LogInPage from "./component/page/LogInPage";
 import RegisterPage from "./component/page/RegisterPage";
+import ProfilePage from "./component/page/ProfilePage";
 function App(props) {
   return (
     <BrowserRouter>
@@ -20,6 +20,7 @@ function App(props) {
           <Route path="Listpage" element={<Listpage />} />
           <Route path="LogInPage" element={<LogInPage />} />
           <Route path="RegisterPage" element={<RegisterPage />} />
+          <Route path="profile" element={<ProfilePage />} />
       </Routes>
   </BrowserRouter>
 
