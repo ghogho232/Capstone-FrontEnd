@@ -5,7 +5,7 @@ import imageData from "../../data.js"; //이미지 변경은 data.js에서
 import { useNavigate } from 'react-router-dom';
 import Button from "../ui/Button";
 import "../CSS/Toolbar.css";
-import axios from 'axios';
+import axios from "axios";
 
 const Toolbar = () => {
     const navigate = useNavigate();

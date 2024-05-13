@@ -11,6 +11,8 @@ import Listpage from "./component/page/ListPage";
 import LogInPage from "./component/page/LogInPage";
 import RegisterPage from "./component/page/RegisterPage";
 import ProfilePage from "./component/page/ProfilePage";
+import axios from "axios";
+
 function App(props) {
   return (
     <BrowserRouter>

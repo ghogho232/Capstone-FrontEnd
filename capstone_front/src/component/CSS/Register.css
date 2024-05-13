@@ -92,7 +92,7 @@ h1 {
     overflow: hidden;
 }
 
-#register-form input[type="submit"] {
+#register-form input[type="button"] {
     position: flex;
     color: #fff;
     font-size: 12pt;
