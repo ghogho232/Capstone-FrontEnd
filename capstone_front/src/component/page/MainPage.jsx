@@ -16,10 +16,13 @@ function MainPage(props) {
     return (
         <div>
             <Toolbar />
-            <Header />
-            <p>
-                메인 이미지 수정, 백과 연동 후 실제 실행 화면과 함께 서비스 설명 추가
-            </p>
+           
+            <h1 className="title" style={{ fontSize: "50pt", margin: 0, padding: 0, paddingTop: 400 }}> CLOTHZ </h1>
+                <h2 style={{ fontSize: "15pt", color: "#840418", fontFamily: "" }}>Try fancy, get easy!</h2>
+                <p>ClothZ서비스의 간략한 소개</p>
+                <p>
+                    메인 이미지 수정, 백과 연동 후 실제 실행 화면과 함께 서비스 설명 추가
+                </p>
             <div style={{ alignContent: "space-between" }}>
                 <Button
                     title='temp'
@@ -39,6 +42,7 @@ function MainPage(props) {
                     style={{ padding: "30px", fontSize: "30pt" }}
                 />
             </div>
+            <Header />
         </div>
     );
 }
