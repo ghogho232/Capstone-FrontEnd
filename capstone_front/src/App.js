@@ -4,6 +4,7 @@ import {
     Routes,
     Route
 } from "react-router-dom";
+import { useState } from "react";
 import './App.css';
 import Main from './component/page/MainPage';
 import Loading from "./component/page/Loading";
@@ -14,6 +15,7 @@ import ProfilePage from "./component/page/ProfilePage";
 import axios from "axios";
 
 function App(props) {
+
   return (
     <BrowserRouter>
       <Routes>

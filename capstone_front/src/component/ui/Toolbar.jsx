@@ -6,34 +6,95 @@ import { useNavigate } from 'react-router-dom';
 import Button from "../ui/Button";
 import "../CSS/Toolbar.css";
 import axios from "axios";
+import { useAuth } from "../controller/AuthContext";
 
 const Toolbar = () => {
     const navigate = useNavigate();
+    const { isLoggedIn, login, logout } = useAuth();
+
+    useEffect(() => {
+        const logincheck = () => {
+            var tok = localStorage.getItem("token")
+            if (tok !== null) {
+                login(tok);
+            }
+        }
+        logincheck();
+    }, []); // 컴포넌트가 처음 렌더링 될 때 한 번만 실행
+
+
     const tokencheck = () => {
         var tok = localStorage.getItem("token")
-        if (tok !== null) window.location.href = "/profile";
-        else window.location.href = "/LogInPage";
+        if (tok !== null) {
+            login(tok);
+            navigate('/profile');
+            //window.location.href = "/profile";
+        }
+        else {
+            logout();
+            window.location.href = "/LogInPage";
+        }
+    }
+    const sessionLogout = (e) => {
+        localStorage.removeItem("token");
+        logout();
+        window.location.href = "/";
+    }
+    if (isLoggedIn) { //로그인이 되어있을 때
+        return (
+            <div className="toolbar">
+                <Button
+                    title="CLOTHZ"
+                    onClick={() => {
+                        navigate('/');
+                    }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                />
+                <Button
+                    title="로그아웃"
+                    onClick={() => {
+                        sessionLogout();
+                    }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "15pt" }}
+                />
+                <Button
+                    title=< img src="img/profile.png" alt="Profile" width={40} height={40} />
+                    onClick={() => {
+                        tokencheck();
+                    }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                />
+            </div>
+        );
+    }
+    else{ //로그인이 되어있지 않을 때
+        return (
+            <div className="toolbar">
+                <Button
+                    title="CLOTHZ"
+                    onClick={() => {
+                        navigate('/');
+                    }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                />
+                <Button
+                    title="로그인"
+                    onClick={() => {
+                        navigate('/LogInPage');
+                    }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "15pt" }}
+                />
+                <Button
+                    title=< img src="img/profile.png" alt="Profile" width={40} height={40} />
+                    onClick={() => {
+                        tokencheck();
+                    }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                />
+            </div>
+        );
     }
 
-    return (
-        <div className="toolbar">
-            <Button
-                title="CLOTHZ"
-                onClick={() => {
-                    navigate('/');
-                }}
-                style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
-            />
-
-            <Button
-                title=< img src="img/profile.png" alt="Profile" width={40} height={40} />
-                onClick={() => {
-                    tokencheck();
-                }}
-                style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
-            />
-        </div>
-    );
 
 };
 

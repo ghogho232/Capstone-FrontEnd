@@ -19,20 +19,19 @@ function RegisterPage() {
     const [message, setMessage] = useState("");
 
     const registeraxios = () => {
-        axios.post(
-            "http://15.165.131.15:8080/api/signup",
-            {
+        axios({
+            method: "POST",
+            url: "http://15.165.131.15:8080/api/signup",
+            data: {
                 email: emailinput,
                 nickname: usernameinput,
                 password: passwordinput
             },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "accept": "*/*"
-                }
+            headers: {
+                "Content-Type": "application/json",
+                "accept": "*/*"
             }
-        ).then((res) => {
+        }).then((res) => {
             console.log(res);
             alert("회원가입이 완료되었습니다. 로그인해주세요.");
             if (res.status === 200) {

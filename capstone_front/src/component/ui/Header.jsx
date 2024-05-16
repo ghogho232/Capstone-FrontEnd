@@ -4,10 +4,12 @@ import { Carousel } from "react-responsive-carousel";
 import imageData from "../../data.js"; //이미지 변경은 data.js에서
 import { useNavigate } from 'react-router-dom';
 import Button from "../ui/Button";
+import {useAuth} from "../controller/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate();
- const [currentIndex, setCurrentIndex] = useState();
+  const { isLoggedIn, login, logout } = useAuth();
+  const [currentIndex, setCurrentIndex] = useState();
   function handleChange(index) {
     setCurrentIndex(index);
   }
@@ -17,7 +19,7 @@ const Header = () => {
 
       <a href={"/RegisterPage"} className="legend" style={{fontStyle:"oblique", fontSize: "10pt", backgroundColor: "#ddd", color:"black", textDecorationLine:"None"}}>{image.label}</a> 
   </div>
-));
+  ));
   return (
     <div className="DisplayImage">
         <Carousel
