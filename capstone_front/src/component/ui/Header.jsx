@@ -15,19 +15,21 @@ const Header = () => {
     <div key={image.alt}>
       <img src={image.url} alt={image.alt} />
 
-      <a href={"/RegisterPage"} className="legend" style={{fontStyle:"oblique", fontSize: "20pt", backgroundColor: "#ddd", color:"black", textDecorationLine:"None"}}>{image.label}</a> 
+      <a href={"/RegisterPage"} className="legend" style={{fontStyle:"oblique", fontSize: "10pt", backgroundColor: "#ddd", color:"black", textDecorationLine:"None"}}>{image.label}</a> 
   </div>
 ));
   return (
     <div className="DisplayImage">
         <Carousel
-          showArrows={false}
+          showArrows={true}
           autoPlay={true}
           infiniteLoop={true}
           showThumbs={false}
+          showIndicators={true}
           selectedItem={imageData[currentIndex]}
+          showStatus={false}
           onChange={handleChange}
-          className="w-[400px] lg:hidden">
+          width={"800px"}>
           {renderSlides}
         </Carousel>
     </div>  

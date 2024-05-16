@@ -16,12 +16,12 @@
     padding-bottom: 30px;
 }
 
-tr{
+tbody {
     width: 100%;
     border-spacing: 0;
 }
 
-th{
+th {
     display: inline-block;
     width: max-content;
     text-align: left;
@@ -79,16 +79,17 @@ h1 {
     background-color: #ffffff;
     border: none;
 }
-#register-form select {
-    width: 30%;
-    height: 100%;
-    display: inline;
-    border: none;
+
+#register-form input:hover {
+    opacity: 0.8;
+    display: block;
 }
-#register-form input[type="email"] {
-    width: 60%;
-    border: none;
-    align-content:flex-end
+
+
+#register-form input::placeholder{
+    font-size: 7pt;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #register-form input[type="submit"] {
@@ -96,8 +97,8 @@ h1 {
     color: #fff;
     font-size: 12pt;
     background-color: #840418;
-    padding-left:10%;
-    padding-right:10%;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 8px;
     padding-bottom: 8px;
     width: 40%;
