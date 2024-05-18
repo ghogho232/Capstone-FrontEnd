@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => { //로그인 여부를 확인하�
   const logout = () => {
     setIsLoggedIn(false);
   };
-
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
       {children}
