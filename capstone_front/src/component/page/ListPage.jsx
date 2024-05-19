@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import RecommendItem from "../ui/RecommendItem";
 import Button from "../ui/Button";
+import axios from 'axios';
 
 function MainPage() {
   const [imgFile, setImgFile] = useState("");
+  const [selectedItems, setSelectedItems] = useState([]);
   const imgRef = React.useRef(null);
 
   useEffect(() => {
@@ -15,6 +17,40 @@ function MainPage() {
     titleElement.innerHTML = `List`;
   }, []);
 
+  const handleCheckboxChange = (script) => {
+    // 이미 선택된 아이템인지 확인
+    const isSelected = selectedItems.includes(script);
+  
+    if (isSelected) {
+      // 이미 선택된 경우 선택을 해제
+      setSelectedItems(selectedItems.filter(item => item !== script));
+    } else {
+      // 선택되지 않은 경우 선택 목록에 추가
+      setSelectedItems([...selectedItems, script]);
+    }
+  };
+
+  // 선택된 아이템을 서버에 전송하는 함수
+  const sendSelectedItems = () => {
+    // 선택된 아이템을 서버로 전송
+    var accessToken = localStorage.getItem("token");
+    axios({
+      method: "POST",
+      url: "http://15.165.131.15:8080/api/styling/words",
+      data: {
+        selectedItems: selectedItems
+      },
+      headers: {
+          "Content-Type": "application/json",
+          "accept": "*/*",
+          Authorization: `Bearer ${accessToken}`
+      }
+      }).then((res) => {
+          console.log("Selected items sent successfully:", res);
+      }).catch((err) => {
+          console.error("Error sending selected items:", err);
+      });
+  };
  
   const handleButtonClick = e => {
     imgRef.current.click();
@@ -55,16 +91,17 @@ function MainPage() {
           style={{ width: "60px", height: "60px", objectFit: "contain" }}
         />
       </React.Fragment>
-      <form method="post" action="url" id="list" className="list">
+      <form id="list" className="list">
         <table>
           <tbody>
             <tr>
               <RecommendItem
                 id="op1"
                 htmlFor="op1"
-                src="img/keyword (1).png"
+                src="img/keyword (1).png"        
                 alt="Product 1"
-                script="봄 스타일 추천"
+                script="봄 스타일 추천"      
+                onChange={() => handleCheckboxChange('op1')}  
               />
               <RecommendItem
                 id="op2"
@@ -72,6 +109,7 @@ function MainPage() {
                 src="img/keyword (2).png"
                 alt="Product 2"
                 script="스트릿"
+                onChange={() => handleCheckboxChange('op2')}  
               />
               <RecommendItem
                 id="op3"
@@ -79,6 +117,7 @@ function MainPage() {
                 src="img/keyword (3).png"
                 alt="Product 3"
                 script="아메카지"
+                onChange={() => handleCheckboxChange('op3')}  
               />
             </tr>
             <tr>
@@ -88,6 +127,7 @@ function MainPage() {
                 src="img/keyword (4).png"
                 alt="Product 4"
                 script="스포티"
+                onChange={() => handleCheckboxChange('op4')}  
               />
               <RecommendItem
                 id="op5"
@@ -95,6 +135,7 @@ function MainPage() {
                 src="img/keyword (5).png"
                 alt="Product 5"
                 script="청량한 여름옷"
+                onChange={() => handleCheckboxChange('op5')}  
               />
               <RecommendItem
                 id="op6"
@@ -102,6 +143,7 @@ function MainPage() {
                 src="img/keyword (6).png"
                 alt="Product 6"
                 script="럭비셔츠"
+                onChange={() => handleCheckboxChange('op6')}  
               />
             </tr>
             <tr>
@@ -111,6 +153,7 @@ function MainPage() {
                 src="img/keyword (7).png"
                 alt="Product 7"
                 script="톤다운"
+                onChange={() => handleCheckboxChange('op7')}  
               />
               <RecommendItem
                 id="op8"
@@ -118,6 +161,7 @@ function MainPage() {
                 src="img/keyword (8).png"
                 alt="Product 8"
                 script="MZ 오피스"
+                onChange={() => handleCheckboxChange('op8')}  
               />
               <RecommendItem
                 id="op9"
@@ -125,6 +169,7 @@ function MainPage() {
                 src="img/keyword (9).png"
                 alt="Product 9"
                 script="데일리 캐주얼"
+                onChange={() => handleCheckboxChange('op9')}  
               />
             </tr>
           </tbody>
@@ -132,7 +177,7 @@ function MainPage() {
 
         <div className="prompt"> Or..You can type it ! </div>
         <textarea placeholder="Type your keyword" type="input" className="inputbox" />
-        <div><input type="submit" value="> > > NEXT" id="nextButton" className="nextbutton" /></div>
+        <div><input type="button" value="> > > NEXT" id="nextButton" className="nextbutton" onClick={sendSelectedItems}/></div>
       </form>
     </div>
   );

@@ -27,12 +27,13 @@ function ProfilePage() {
                 Authorization: `Bearer ${accessToken}`
             }
         }).then(response => {
-        // console.log(response.data);
+        console.log(response.data.data.email);
+        console.log(response.data.data.nickname);
         JSON.stringify(response);
-            setEmail(response.data["email"]);
-            setName(response.data["nickname"]);
-    }).catch(error => {
-        console.log(error);
+            setEmail(response.data.data.email);
+            setName(response.data.data.nickname);
+        }).catch(error => {
+            console.log(error);
     });
 
     /*
@@ -73,6 +74,7 @@ function ProfilePage() {
                 </tr>
                 <tr>
                     <th className="name">닉네임</th> <th onChange={handlename}>{nickname}</th>
+                    <br></br>
                     <input type="button" value="이름 변경" id="changename" className="but1" onClick={change} />
                 </tr>
                 <tr>
