@@ -9,7 +9,8 @@ function Item(props) {
         <div className="works_main">
           <div className="works_container">
             <input type="checkbox" id={id}
-              onChange={() => onChange(script)} />
+              onChange={() => onChange(script)} /> 
+              {/* script로 prompt를 넘기기 */}
             <label htmlFor={htmlFor}>
               <img src={src} alt={alt} />
             </label>

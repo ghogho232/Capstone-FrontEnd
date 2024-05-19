@@ -22,17 +22,17 @@ function MainPage() {
     const isSelected = selectedItems.includes(script);
   
     if (isSelected) {
-      // 이미 선택된 경우 선택을 해제합니다.
+      // 이미 선택된 경우 선택을 해제
       setSelectedItems(selectedItems.filter(item => item !== script));
     } else {
-      // 선택되지 않은 경우 선택 목록에 추가합니다.
+      // 선택되지 않은 경우 선택 목록에 추가
       setSelectedItems([...selectedItems, script]);
     }
   };
 
   // 선택된 아이템을 서버에 전송하는 함수
   const sendSelectedItems = () => {
-    // 선택된 아이템을 서버로 전송하는 HTTP 요청을 수행합니다.
+    // 선택된 아이템을 서버로 전송
     var accessToken = localStorage.getItem("token");
     axios({
       method: "POST",
