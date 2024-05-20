@@ -5,9 +5,12 @@ import Button from "../ui/Button";
 import Toolbar from "../ui/Toolbar";
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import { useAuth } from "../controller/AuthContext";
 
 function LogInPage() {
     const navigate = useNavigate();
+    const { isLoggedIn, login, logout } = useAuth();
+
     useEffect(() => {
         const titleElement = document.getElementsByTagName('title')[0];
         titleElement.innerHTML = `Login`;
@@ -40,6 +43,7 @@ function LogInPage() {
             console.log(response);
             if (response.headers.hasAuthorization) {
                 var token = response.headers.getAuthorization();
+                login(token); //로그인 함수 호출
                 localStorage.setItem('token', token); //로컬스토리지에 저장
             }
             window.location.href = '/'; //로그인 성공시 메인페이지로 이동

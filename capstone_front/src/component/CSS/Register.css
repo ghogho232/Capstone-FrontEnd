@@ -92,16 +92,16 @@ h1 {
     overflow: hidden;
 }
 
-#register-form input[type="submit"] {
+#register-form input[type="button"] {
     position: flex;
     color: #fff;
-    font-size: 12pt;
+    font-size: 10pt;
     background-color: #840418;
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 8px;
     padding-bottom: 8px;
-    width: 40%;
+    width: 150%;
     height: 20%;
     text-align: center;
 }
