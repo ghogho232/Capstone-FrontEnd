@@ -47,7 +47,7 @@ function FileUploadComponent() {
     return (
         <div>
             {/* 파일 선택을 위한 input 요소 */}
-            <input type="file" onChange={handleFileChange} />
+            <input type="file" multiple={true} onChange={handleFileChange} />
             {/* 파일 업로드를 시작하는 버튼 */}
             <button onClick={handleUpload}>Upload</button>
         </div>

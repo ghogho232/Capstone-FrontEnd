@@ -10,12 +10,13 @@ const Header = () => {
   const navigate = useNavigate();
   const { isLoggedIn, login, logout } = useAuth();
   const [currentIndex, setCurrentIndex] = useState();
+  
   function handleChange(index) {
     setCurrentIndex(index);
   }
   const renderSlides = imageData.map(image => (
     <div key={image.alt}>
-      <img src={image.url} alt={image.alt} />
+      <img height={"450px"} src={image.url} alt={image.alt} />
 
       <a href={"/RegisterPage"} className="legend" style={{fontStyle:"oblique", fontSize: "10pt", backgroundColor: "#ddd", color:"black", textDecorationLine:"None"}}>{image.label}</a> 
   </div>
@@ -31,7 +32,8 @@ const Header = () => {
           selectedItem={imageData[currentIndex]}
           showStatus={false}
           onChange={handleChange}
-          width={"800px"}>
+          width={"800px"}
+          >
           {renderSlides}
         </Carousel>
     </div>  
