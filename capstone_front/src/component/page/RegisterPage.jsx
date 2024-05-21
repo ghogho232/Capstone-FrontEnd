@@ -8,6 +8,7 @@ import UploadButton from "../ui/FileInput";
 import axios from 'axios';
 import { useState } from "react";
 
+
 function RegisterPage() {
     const navigate = useNavigate();
     const [emailinput, setEmailinput] = useState("");    
@@ -55,6 +56,7 @@ function RegisterPage() {
         var pw = document.getElementById("pw").value;
         var pwcheck = document.getElementById("PwCheck").value;
 
+
         if(pw === "" || pwcheck === "") {alert("비밀번호를 입력해주세요.");}
         else if (pw !== pwcheck) {
             alert("비밀번호가 일치하지 않습니다.");
@@ -89,6 +91,7 @@ function RegisterPage() {
                             <th>
                                 <label htmlFor="name" className="register-label">이름</label></th>
                             <td><input type="text" id="Name" name="name" placeholder="국문 / 영문 3~20자 이내" 
+
                             onChange={(e) => {
                                 setUsernameinput(e.target.value);
                             }}/>
@@ -99,6 +102,7 @@ function RegisterPage() {
                             <th>
                                 <label htmlFor="password" className="register-label">비밀번호</label></th>
                             <td><input type="password" id="pw" name="pw" placeholder="영문/숫자/특수문자 포함 8~20자 이내"
+
                             onChange={(e) => {
                                 setPasswordinput(e.target.value);
                             }}/>
@@ -117,8 +121,8 @@ function RegisterPage() {
                         </tr>
 
                     </table>
-                   
                     <input type="button" value="Sign" className="Sign" style={{width:"70%"}} onClick={registeraxios}/>
+
                 </form>
             </form>
         </div>

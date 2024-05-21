@@ -10,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const { isLoggedIn, login, logout } = useAuth();
   const [currentIndex, setCurrentIndex] = useState();
-
+  
   function handleChange(index) {
     setCurrentIndex(index);
   }

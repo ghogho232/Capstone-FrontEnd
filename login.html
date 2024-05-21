@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <title>Login</title>
+    <style>
+
+
+        *{
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        body{
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+        label {
+            padding: 10px;
+            display: block;
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .login-wrapper{
+            width: 400px;
+            height: 350px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .login-wrapper > h2{
+            font-size: 24px;
+            color: #6A24FE;
+            margin-bottom: 20px;
+        }
+        #login-form > input{
+            width: 100%;
+            height: 48px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            background-color: #F8F8F8;
+        }
+        #login-form > input::placeholder{
+            color: #D2D2D2;
+        }
+        #login-form > input[type="submit"]{
+            color: #fff;
+            font-size: 16px;
+            background-color: #840418;
+            margin-top: 20px;
+        }
+        #login-form > input[type="checkbox"]{
+            display: none;
+        }
+        #login-form > label{
+            color: #999999;
+        }
+        #login-form input[type="checkbox"] + label{
+            cursor: pointer;
+            padding-left: 26px;
+            background-image: url("checkbox.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        #login-form input[type="checkbox"]:checked + label{
+            background-image: url("checkbox-active.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toolbar" display = flex; justifyContent = space-between alignItems = center>
+        <p>CLOTHZ</p>
+        <a href=" "><img src="logo2.png" width=40 height=40 /></a>
+      </div>
+    <div class="login-wrapper" display = flex; justifyContent = space-between alignItems = center>
+        <h1 style="font-family: 'Moirai One'; color: #840418; font-size: 40pt; text-align: center; padding: 20pt">Login</h1>
+        <form method="post" action="서버의url" id="login-form">
+            <input type="text" name="userName" placeholder="Email">
+            <input type="password" name="userPassword" placeholder="Password">
+            <label for="remember-check">
+                <input type="checkbox" id="remember-check"> 아이디 저장하기
+            </label>
+            <input type="submit" value="Login">
+        </form>
+        <div class="sign-up" display = flex; justifyContent = space-between alignItems = center;>
+            <hr align="center" style="border:solid 1px #D2D2D2; width: 100%; margin-top: 5pt;">
+            <a href='sign.html'><input type="button" class="signup" style="padding: 10px", "fontSize: 50pt" value="회원가입 하기"></input></a>
+        </div>
+    </div>
+    
+    
+</body>
+
+</html>
