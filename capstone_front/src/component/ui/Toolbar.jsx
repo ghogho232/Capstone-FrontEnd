@@ -78,13 +78,6 @@ const Toolbar = () => {
                     style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
                 />
                 <Button
-                    title="로그인"
-                    onClick={() => {
-                        navigate('/LogInPage');
-                    }}
-                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "15pt" }}
-                />
-                <Button
                     title=< img src="img/profile.png" alt="Profile" width={40} height={40} />
                     onClick={() => {
                         tokencheck();

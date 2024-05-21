@@ -9,7 +9,6 @@ import axios from 'axios';
 import { useState } from "react";
 
 
-
 function RegisterPage() {
     const navigate = useNavigate();
     const [emailinput, setEmailinput] = useState("");    
@@ -56,8 +55,10 @@ function RegisterPage() {
     const pwcheck = () => {
         var pw = document.getElementById("pw").value;
         var pwcheck = document.getElementById("PwCheck").value;
-    
-        if (pw !== pwcheck) {
+
+
+        if(pw === "" || pwcheck === "") {alert("비밀번호를 입력해주세요.");}
+        else if (pw !== pwcheck) {
             alert("비밀번호가 일치하지 않습니다.");
             document.getElementById("pw").value = "";
             document.getElementById("PwCheck").value = "";
@@ -72,7 +73,6 @@ function RegisterPage() {
             <Toolbar />
             <div className="register-wrapper">
                 <h1>Sign Up</h1>
-                <UploadButton />
             </div>
             <form>
                 <form id="register-form">
@@ -90,7 +90,8 @@ function RegisterPage() {
                         <tr>
                             <th>
                                 <label htmlFor="name" className="register-label">이름</label></th>
-                            <td><input type="text" id="Name" name="name" 
+                            <td><input type="text" id="Name" name="name" placeholder="국문 / 영문 3~20자 이내" 
+
                             onChange={(e) => {
                                 setUsernameinput(e.target.value);
                             }}/>
@@ -100,7 +101,8 @@ function RegisterPage() {
                         <tr>
                             <th>
                                 <label htmlFor="password" className="register-label">비밀번호</label></th>
-                            <td><input type="password" id="pw" name="pw" 
+                            <td><input type="password" id="pw" name="pw" placeholder="영문/숫자/특수문자 포함 8~20자 이내"
+
                             onChange={(e) => {
                                 setPasswordinput(e.target.value);
                             }}/>
@@ -119,8 +121,8 @@ function RegisterPage() {
                         </tr>
 
                     </table>
-                   
-                    <input type="button" value="Sign" className="Sign" onClick={registeraxios}/>
+                    <input type="button" value="Sign" className="Sign" style={{width:"70%"}} onClick={registeraxios}/>
+
                 </form>
             </form>
         </div>
