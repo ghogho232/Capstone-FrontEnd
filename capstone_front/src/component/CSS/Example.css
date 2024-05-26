@@ -1,0 +1,46 @@
+.howto{
+    position: relative;
+}
+
+.howto_2{
+    font-size: large;
+    font-weight: bold;
+    padding: 20px;
+}
+
+h2 {
+    padding-bottom: 50px;
+}
+
+.Display{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.howtotitle {
+    position: relative;
+    font-Family: 'Moirai One';
+    color: #840418;
+    font-Size: 40pt;
+    font-Weight: bold;
+    text-Align: center;
+    margin-top: 66%;
+}
+
+.howtobutton {
+    border: none;
+    border-radius: 100vh;
+    background-color: #dfdfdf;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    font-Family: 'Moirai One';
+    color: #840418;
+    font-Size: 30pt;
+    font-Weight: bold;
+    text-Align: center;
+    align-items: right;
+    display: flex;
+}

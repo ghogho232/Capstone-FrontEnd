@@ -27,7 +27,7 @@ function MainPage(props) {
                 <Button
                     title='temp'
                     onClick={() => {
-                        navigate('/loading');
+                        navigate('/result');
                     }}
                     className='recommend'
                     style={{ padding: "30px", fontSize: "30pt", alignItems: "left" }}
@@ -36,7 +36,7 @@ function MainPage(props) {
                 <Button
                     title='스타일 추천받기'
                     onClick={() => {
-                        navigate('/ListPage');
+                        navigate('/example');
                     }}
                     className='recommend'
                     style={{ padding: "30px", fontSize: "30pt" }}
