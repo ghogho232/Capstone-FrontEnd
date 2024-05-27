@@ -1,16 +1,18 @@
 import React from 'react';
 
-function Item(props) {
+function RecommendItem(props) {
   const { id, htmlFor, src, alt, script, onChange } = props;
- //id로 prompt를 넘겨줄 수 있는지 확인.
+
   return (
     <td>
       <li>
         <div className="works_main">
           <div className="works_container">
-            <input type="checkbox" id={id}
-              onChange={() => onChange(script)} /> 
-              {/* script로 prompt를 넘기기 */}
+            <input 
+              type="checkbox" 
+              id={id} 
+              onChange={() => onChange(script)} 
+            />
             <label htmlFor={htmlFor}>
               <img src={src} alt={alt} />
             </label>
@@ -22,4 +24,4 @@ function Item(props) {
   );
 }
 
-export default Item;
+export default RecommendItem;
