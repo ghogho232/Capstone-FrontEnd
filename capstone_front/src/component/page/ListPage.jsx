@@ -18,15 +18,17 @@ function ListPage() {
 
 
   const handleCheckboxChange = (script) => {
+    const words = document.getElementById(script).value;
+    console.log(words);
     // 이미 선택된 아이템인지 확인
-    const isSelected = selectedItems.includes(script);
+    const isSelected = selectedItems.includes(words);
     if (isSelected) {
       // 이미 선택된 경우 선택을 해제
-      setSelectedItems(selectedItems.filter(item => item !== script));
+      setSelectedItems(selectedItems.filter(item => item !== words));
       console.log(selectedItems);
     } else {
       // 선택되지 않은 경우 선택 목록에 추가
-      setSelectedItems([...selectedItems, script]);
+      setSelectedItems([...selectedItems, words]);
       console.log(selectedItems);
     }
   };

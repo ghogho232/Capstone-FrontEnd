@@ -12,6 +12,7 @@ function RecommendItem(props) {
               type="checkbox" 
               id={id} 
               onChange={() => onChange(script)} 
+              value={script}
             />
             <label htmlFor={htmlFor}>
               <img src={src} alt={alt} />
