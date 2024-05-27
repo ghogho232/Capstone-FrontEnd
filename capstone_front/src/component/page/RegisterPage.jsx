@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import UploadButton from "../ui/FileInput";
 import axios from 'axios';
 import { useState } from "react";
+import FileInput from "../ui/FileInput";
 
 
 function RegisterPage() {
@@ -73,6 +74,7 @@ function RegisterPage() {
             <Toolbar />
             <div className="register-wrapper">
                 <h1>Sign Up</h1>
+                <FileInput />
             </div>
             <form>
                 <form id="register-form">
