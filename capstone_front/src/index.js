@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Main from './component/page/MainPage';
 import { AuthProvider } from './component/controller/AuthContext';
+import { LoadProvider } from './component/controller/LoadingContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <LoadProvider>     
+        <App />
+      </LoadProvider>
     </AuthProvider>
     
   </React.StrictMode>

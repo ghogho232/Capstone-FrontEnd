@@ -5,11 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import RecommendItem from "../ui/RecommendItem";
+import { useLoad } from "../controller/LoadingContext";
 
 function ListPage() {
   const navigate = useNavigate();
   const [selectedItems, setSelectedItems] = useState([]);
+  const { loading, load, loaded } = useLoad();
   var sentence=" ";
+  
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
@@ -39,9 +42,8 @@ function ListPage() {
     console.log(selectedItems);
   };
 
-  // 선택된 아이템을 서버에 전송하는 함수
   const sendSelectedItems = () => {
-    // 선택된 아이템을 서버로 전송
+    load(); // 로딩 시작
     var accessToken = localStorage.getItem("token");
     axios({
       method: "POST",
@@ -56,9 +58,13 @@ function ListPage() {
       }
     }).then((res) => {
       console.log("Selected items sent successfully:", res);
-      navigate('/loading');
+      console.log(res.data.data);
+
+      loaded();// 로딩 종료
+      navigate('/result'); // 결과 페이지로 이동
     }).catch((err) => {
       console.error("Error sending selected items:", err);
+      loaded();// 로딩 종료
     });
   };
 
@@ -76,7 +82,7 @@ function ListPage() {
                 src="img/keyword (1).png"
                 alt="pink, cherry blossom, spring, flower"
                 script="봄 스타일 추천"
-                onChange={() => handleCheckboxChange('keyword')}
+                onChange={() => handleCheckboxChange('op1')}
               />
               <RecommendItem
                 id="op2"
@@ -153,6 +159,7 @@ function ListPage() {
         <textarea placeholder="Type your keyword" type="input" id="inputbox" className="inputbox" />
         <div><input type="button" value="keyword add" id="addButton" className="addbutton" onClick={makeSentence} /></div>
         <div><input type="button" value="> > > NEXT" id="nextButton" className="howtobutton" onClick={sendSelectedItems} /></div>
+        {loading && navigate('/Loading')} {/* 로딩 중일 때만 로딩 화면 표시 */}
       </form>
     </div>
   );
