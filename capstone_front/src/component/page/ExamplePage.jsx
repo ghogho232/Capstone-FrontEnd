@@ -21,7 +21,11 @@ function ExamplePage() {
   }];
 
   const showexample = () => {
-    if (btnclick === 0) {
+    if(localStorage.getItem("token") === null){
+      alert("로그인을 해주세요!");
+      navigate('/LoginPage');
+    }
+    else if (btnclick === 0){
       axios.defaults.baseURL = "http://15.165.131.15:8080/";
       axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
       axios({
@@ -69,13 +73,13 @@ function ExamplePage() {
       <p className="howto_2"> 1. 먼저 로그인해주세요 !</p>
       <Button
         title='로그인 하러가기'
-        onClick={() => { navigate('/LoginPage'); }}
+        onClick={() => {  if (localStorage.getItem("token") === null) { navigate('/LoginPage'); } }}
         className='recommend'
         style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
       />
-      <p className="howto_2"> 2. 회원 가입 시 이미지를 등록하지 않았다면, 이미지를 등록한 후 사용해주세요 !</p>
+      <p className="howto_2"> 2. 사용자의 이미지를 등록해주세요 !</p>
       <FileInput />
-      <p className="howto_2"> 3. 이미지가 등록되었다면, 버튼을 눌러 이미지와 스타일 작성 예시를 확인해주세요 !</p>
+      <p className="howto_2"> 3. 버튼을 눌러 피팅된 이미지와 스타일 작성 예시를 확인해주세요 !</p>
       <Button
         title='예시 보기'
         onClick={showexample}

@@ -17,7 +17,6 @@ function ResultPage() {
     const { imageUrl,setUrl } = useUrl();
 
     //결과이미지출력
-
     //googlelens api 호출
     const showproduct = () => {
         var accessToken = localStorage.getItem("token");
@@ -36,18 +35,16 @@ function ResultPage() {
             console.log(res.data.data.search_metadata)
             const resUrl = res.data.data.search_metadata.prettify_html_file;
             window.open(resUrl);
-            
         }).catch((err) => {
             console.error("Error sending selected items:", err);
-            
         });
     }
 
     return (
-        <div className="howto">
+        <div>
             <Toolbar />
-            <div className="howtotitle"> Check your style </div>
-            <div className="resultDisplay"> {imageUrl && <img src={imageUrl} alt="Result" />}</div>
+            <div className="resulttitle"> Check your style </div>
+            <div className="resultDisplay"> {imageUrl && <img height='50%' width = '50%' src={imageUrl} alt="Result" />}</div>
             <Button
                 title='유사한 상품 보기'
                 onClick={showproduct}

@@ -1,0 +1,17 @@
+.resulttitle {
+    position: static;
+    font-Family: 'Moirai One';
+    color: #840418;
+    font-Size: 40pt;
+    font-Weight: bold;
+    text-Align: center;
+    margin-top: 30%;
+    margin-bottom: 5%;
+}
+
+.resultDisplay {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}

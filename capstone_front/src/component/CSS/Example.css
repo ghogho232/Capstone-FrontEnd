@@ -1,7 +1,3 @@
-.howto{
-    position: relative;
-}
-
 .howto_2{
     font-size: large;
     font-weight: bold;
@@ -20,7 +16,7 @@ h2 {
 }
 
 .howtotitle {
-    position: relative;
+    position: static;
     font-Family: 'Moirai One';
     color: #840418;
     font-Size: 40pt;
