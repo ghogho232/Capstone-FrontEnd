@@ -6,31 +6,15 @@ import Toolbar from "../ui/Toolbar";
 import Button from "../ui/Button";
 import axios from 'axios';
 
-function ResultPage() {
+function ResultPage(url) {
     const navigate = useNavigate();
-    var src = "";
 
-    //결과이미지출력
     useEffect(() => {
-        axios.defaults.baseURL = "http://15.165.131.15:8080/";
-        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
-        axios({
-            url: "api/recommendation",
-            method: 'GET',
-            responseType: 'json'
-        }).then((response) => {
-            console.log(response.data)
-            let userFullnames = response.data.data.map(function (element) {
-                src =  `${element.image}`;
-            }
-        )
-        }).then(() => {
-            var resultshow = document.createElement('div');
-            resultshow.setAttribute("id", "resultshow");
-            resultshow.setAttribute("style", "position: absolute; justify-content: center;");
-            resultshow.innerHTML += "<img height='300px' src='" + src + "' /> ";
-            document.getElementById("resultDisplay").appendChild(resultshow);
-        })
+    const resultshow = document.createElement('div');
+    resultshow.setAttribute("id", "resultshow");
+    resultshow.setAttribute("style", "position: absolute; justify-content: center;");
+    resultshow.innerHTML += "<img height='300px' src='" + url + "' /> ";
+    document.getElementById("resultDisplay").appendChild(resultshow);
     }, []);
 
     //googlelens api 호출
@@ -41,16 +25,16 @@ function ResultPage() {
             method: "POST",
             url: "api/recommendation",
             data: {
-              imgUrl: src
+                imgUrl: url
             },
             headers: {
-              "Content-Type": "application/json",
-              "accept": "*/*",
+                "Content-Type": "application/json",
+                "accept": "*/*",
             }
         }).then((response) => {
             console.log(response.data)
         }).then(() => {
-            
+
         })
     }
 

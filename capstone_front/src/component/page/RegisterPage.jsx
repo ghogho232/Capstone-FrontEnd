@@ -19,6 +19,7 @@ function RegisterPage() {
     const [message, setMessage] = useState("");
 
     const registeraxios = () => {
+        console.log(emailinput, usernameinput, passwordinput);
         axios({
             method: "POST",
             url: "http://15.165.131.15:8080/api/signup",
@@ -74,7 +75,6 @@ function RegisterPage() {
             <Toolbar />
             <div className="register-wrapper">
                 <h1>Sign Up</h1>
-                <FileInput />
             </div>
             <form>
                 <form id="register-form">

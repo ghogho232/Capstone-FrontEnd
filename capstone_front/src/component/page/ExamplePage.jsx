@@ -59,26 +59,28 @@ function ExamplePage() {
   }
 
   return (
-    <div className="howto">
+    <div className="main">
       <Toolbar />
       <div className="howtotitle"> How to Use CLOTHZ ? </div>
       <p className="howto_2"> 1. 먼저 로그인해주세요 !</p>
       <Button
         title='로그인 하러가기'
-        onClick={() => { navigate('/LoginPage'); }}
+        onClick={() => {
+          if (localStorage.getItem("token") === null) { navigate('/LoginPage'); }
+        }}
         className='recommend'
         style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
       />
-      <p className="howto_2"> 2. 회원 가입 시 이미지를 등록하지 않았다면, 이미지를 등록한 후 사용해주세요 !</p>
-      <FileInput />
-      <p className="howto_2"> 3. 이미지가 등록되었다면, 버튼을 눌러 이미지와 스타일 작성 예시를 확인해주세요 !</p>
-      <Button
-        title='예시 보기'
-        onClick={showexample}
-        className='recommend'
-        style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
-      />
-      <div className="Diplay" id="Display"> </div>
+        <p className="howto_2"> 2. 회원 가입 시 이미지를 등록하지 않았다면, 이미지를 등록한 후 사용해주세요 !</p>
+        <FileInput />
+        <p className="howto_2"> 3. 이미지가 등록되었다면, 버튼을 눌러 이미지와 스타일 작성 예시를 확인해주세요 !</p>
+        <Button
+          title='예시 보기'
+          onClick={showexample}
+          className='recommend'
+          style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
+        />
+        <div className="Diplay" id="Display"> </div>
       <div><input type="button" value="> > > NEXT" className="howtobutton" onClick={() => { navigate('/ListPage'); }} /></div>
     </div>
   );

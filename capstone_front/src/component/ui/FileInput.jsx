@@ -31,14 +31,15 @@ function UploadButton(e) {
   //업로드 버튼 클릭 시 이벤트 핸들러
   const handleUpload = () => {
 
-    //선택된 파일이 없는 경우 에러 
-    if (!file) {
-      console.error('No file selected');
-      return;
-    }
-    else if(localStorage.getItem("token") === null){
+    //선택된 파일이 없는 경우 에러
+    if(localStorage.getItem("token") === null){
       alert("로그인 후 이용해주세요.");
       window.location.href = "/LoginPage";
+    }
+    else if (!file) {
+      console.error('No file selected');
+      alert("이미지를 업로드 해주세요!")
+      return;
     }
 
     //FormData 객체 생성 및 파일 추가

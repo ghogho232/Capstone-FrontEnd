@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import RecommendItem from "../ui/RecommendItem";
+import ResultPage from "./ResultPage";
+import Loading from "./Loading";
 
 function ListPage() {
   const navigate = useNavigate();
   const [selectedItems, setSelectedItems] = useState([]);
-  var sentence=" ";
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
@@ -23,38 +24,33 @@ function ListPage() {
     if (isSelected) {
       // 이미 선택된 경우 선택을 해제
       setSelectedItems(selectedItems.filter(item => item !== script));
-      console.log(selectedItems);
     } else {
       // 선택되지 않은 경우 선택 목록에 추가
       setSelectedItems([...selectedItems, script]);
-      console.log(selectedItems);
     }
-  };
-
-  const makeSentence = () => {
-    sentence = document.getElementById("inputbox").value;
-    selectedItems.push(sentence);
-    console.log(selectedItems);
   };
 
   // 선택된 아이템을 서버에 전송하는 함수
   const sendSelectedItems = () => {
     // 선택된 아이템을 서버로 전송
+    console.log(selectedItems.toString());
     var accessToken = localStorage.getItem("token");
     axios({
       method: "POST",
       url: "http://15.165.131.15:8080/api/styling/words",
       data: {
-        words: selectedItems.toString()
+        inputs: selectedItems.toString()
       },
       headers: {
         "Content-Type": "application/json",
         "accept": "*/*",
         Authorization: `Bearer ${accessToken}`
       }
+    }).then(() => {
+      Loading();
     }).then((res) => {
       console.log("Selected items sent successfully:", res);
-      navigate('/loading');
+      console.log(res.data.data[0].image);
     }).catch((err) => {
       console.error("Error sending selected items:", err);
     });
@@ -74,7 +70,7 @@ function ListPage() {
                 src="img/keyword (1).png"
                 alt="pink, cherry blossom, spring, flower"
                 script="봄 스타일 추천"
-                onChange={() => handleCheckboxChange('keyword')}
+                onChange={() => handleCheckboxChange('spring')}
               />
               <RecommendItem
                 id="op2"
@@ -82,7 +78,7 @@ function ListPage() {
                 src="img/keyword (2).png"
                 alt="Product 2"
                 script="스트릿"
-                onChange={() => handleCheckboxChange('op2')}
+                onChange={() => handleCheckboxChange('street')}
               />
               <RecommendItem
                 id="op3"
@@ -90,7 +86,7 @@ function ListPage() {
                 src="img/keyword (3).png"
                 alt="Product 3"
                 script="아메카지"
-                onChange={() => handleCheckboxChange('op3')}
+                onChange={() => handleCheckboxChange('amekaji')}
               />
             </tr>
             <tr>
@@ -100,7 +96,7 @@ function ListPage() {
                 src="img/keyword (4).png"
                 alt="Product 4"
                 script="스포티"
-                onChange={() => handleCheckboxChange('op4')}
+                onChange={() => handleCheckboxChange('sporty')}
               />
               <RecommendItem
                 id="op5"
@@ -108,7 +104,7 @@ function ListPage() {
                 src="img/keyword (5).png"
                 alt="Product 5"
                 script="청량한 여름옷"
-                onChange={() => handleCheckboxChange('op5')}
+                onChange={() => handleCheckboxChange('vacance')}
               />
               <RecommendItem
                 id="op6"
@@ -116,7 +112,7 @@ function ListPage() {
                 src="img/keyword (6).png"
                 alt="Product 6"
                 script="럭비셔츠"
-                onChange={() => handleCheckboxChange('op6')}
+                onChange={() => handleCheckboxChange('rugby stripe')}
               />
             </tr>
             <tr>
@@ -126,7 +122,7 @@ function ListPage() {
                 src="img/keyword (7).png"
                 alt="Product 7"
                 script="톤다운"
-                onChange={() => handleCheckboxChange('op7')}
+                onChange={() => handleCheckboxChange('natural')}
               />
               <RecommendItem
                 id="op8"
@@ -134,7 +130,7 @@ function ListPage() {
                 src="img/keyword (8).png"
                 alt="Product 8"
                 script="MZ 오피스"
-                onChange={() => handleCheckboxChange('op8')}
+                onChange={() => handleCheckboxChange('office')}
               />
               <RecommendItem
                 id="op9"
@@ -142,14 +138,12 @@ function ListPage() {
                 src="img/keyword (9).png"
                 alt="Product 9"
                 script="데일리 캐주얼"
-                onChange={() => handleCheckboxChange('op9')}
+                onChange={() => handleCheckboxChange('daily casual')}
               />
             </tr>
           </tbody>
         </table>
-        <div className="prompt"> Or..You can type it ! </div>
-        <textarea placeholder="Type your keyword" type="input" id="inputbox" className="inputbox" />
-        <div><input type="button" value="keyword add" id="addButton" className="addbutton" onClick={makeSentence} /></div>
+        <div><input type="button" value="> > > SKIP" id="nextButton" className="skipbutton" onClick={() => navigate('/prompt')} /></div>
         <div><input type="button" value="> > > NEXT" id="nextButton" className="howtobutton" onClick={sendSelectedItems} /></div>
       </form>
     </div>
