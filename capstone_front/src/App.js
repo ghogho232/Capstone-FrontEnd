@@ -14,7 +14,6 @@ import RegisterPage from "./component/page/RegisterPage";
 import ProfilePage from "./component/page/ProfilePage";
 import ExamplePage from "./component/page/ExamplePage";
 import ResultPage from "./component/page/ResultPage";
-import PromptPage from "./component/page/PromptPage";
 import axios from "axios";
 
 function App(props) {
@@ -30,7 +29,6 @@ function App(props) {
           <Route path="profile" element={<ProfilePage />} />
           <Route path="example" element={<ExamplePage />} />
           <Route path="result" element={<ResultPage />} />
-          <Route path="prompt" element={<PromptPage />} />
       </Routes>
   </BrowserRouter>
 

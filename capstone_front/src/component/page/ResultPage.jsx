@@ -5,44 +5,46 @@ import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import Button from "../ui/Button";
 import axios from 'axios';
+import {useUrl} from "../controller/SetImageContext";
 
-function ResultPage(url) {
+function ResultPage() {
     const navigate = useNavigate();
-
     useEffect(() => {
-    const resultshow = document.createElement('div');
-    resultshow.setAttribute("id", "resultshow");
-    resultshow.setAttribute("style", "position: absolute; justify-content: center;");
-    resultshow.innerHTML += "<img height='300px' src='" + url + "' /> ";
-    document.getElementById("resultDisplay").appendChild(resultshow);
+        const titleElement = document.getElementsByTagName('title')[0];
+        titleElement.innerHTML = `Result`;
     }, []);
 
+    const { imageUrl,setUrl } = useUrl();
+
+    //결과이미지출력
     //googlelens api 호출
     const showproduct = () => {
-        axios.defaults.baseURL = "http://15.165.131.15:8080/";
-        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+        var accessToken = localStorage.getItem("token");
         axios({
             method: "POST",
-            url: "api/recommendation",
+            url: "http://15.165.131.15:8080/api/recommendations",
             data: {
-                imgUrl: url
+              imgUrl: imageUrl
             },
             headers: {
-                "Content-Type": "application/json",
-                "accept": "*/*",
+              "Content-Type": "application/json",
+              "accept": "*/*",
+              Authorization: `Bearer ${accessToken}`
             }
-        }).then((response) => {
-            console.log(response.data)
-        }).then(() => {
-
-        })
+        }).then((res) => {
+            console.log(res.data.data.search_metadata)
+            const resUrl = res.data.data.search_metadata.prettify_html_file;
+            window.open(resUrl);
+        }).catch((err) => {
+            console.error("Error sending selected items:", err);
+        });
     }
 
     return (
-        <div className="howto">
+        <div>
             <Toolbar />
-            <div className="howtotitle"> Check your style </div>
-            <div className="resultDisplay" id="resultDisplay"> </div>
+            <div className="resulttitle"> Check your style </div>
+            <div className="resultDisplay"> {imageUrl && <img height='50%' width = '50%' src={imageUrl} alt="Result" />}</div>
             <Button
                 title='유사한 상품 보기'
                 onClick={showproduct}

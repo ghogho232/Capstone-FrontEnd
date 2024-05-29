@@ -21,8 +21,9 @@
     margin-top: 200%;
     margin-bottom: 10%;
 }
+
 .inputbox {
-    position: relative;
+    position: absolute;
     width: 600px;
     height: 200px;
     font-size: 15px;
@@ -32,7 +33,9 @@
     white-space: pre-wrap;
     overflow-wrap: break-word;
     align-self: center;
-    margin-top: 20px;
+    margin-top: 260%;
+    margin-left: -2%;
+    margin-bottom: 10%;
 }
 
 .inputbox:focus {
@@ -111,20 +114,19 @@ label:before {
     cursor: pointer;
 }
 
-.skipbutton {
+.addbutton {
+    position: absolute;
+    background-color: #840418;
+    top: 1300px;
+    left: 200px;
+    color: white;
     border: none;
-    border-radius: 100vh;
-    background-color: #dfdfdf;
-    bottom: 70px;
-    right: 0px;
-    position: fixed;
-    font-Family: 'Moirai One';
-    color: #840418;
-    font-Size: 30pt;
-    font-Weight: bold;
-    text-Align: center;
-    align-items: right;
-    display: flex;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13pt;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 :checked+label img {

@@ -5,12 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import RecommendItem from "../ui/RecommendItem";
-import ResultPage from "./ResultPage";
-import Loading from "./Loading";
+import { useLoad } from "../controller/LoadingContext";
+import {useUrl} from "../controller/SetImageContext";
 
 function ListPage() {
   const navigate = useNavigate();
   const [selectedItems, setSelectedItems] = useState([]);
+  const { loading, load, loaded } = useLoad();
+  const { setUrl } = useUrl(); 
+  var sentence=" ";
+  
 
   useEffect(() => {
     const titleElement = document.getElementsByTagName('title')[0];
@@ -19,25 +23,34 @@ function ListPage() {
 
 
   const handleCheckboxChange = (script) => {
+    const words = document.getElementById(script).value;
+    console.log(words);
     // 이미 선택된 아이템인지 확인
-    const isSelected = selectedItems.includes(script);
+    const isSelected = selectedItems.includes(words);
     if (isSelected) {
       // 이미 선택된 경우 선택을 해제
-      setSelectedItems(selectedItems.filter(item => item !== script));
+      setSelectedItems(selectedItems.filter(item => item !== words));
+      console.log(selectedItems);
     } else {
       // 선택되지 않은 경우 선택 목록에 추가
-      setSelectedItems([...selectedItems, script]);
+      setSelectedItems([...selectedItems, words]);
+      console.log(selectedItems);
     }
   };
 
-  // 선택된 아이템을 서버에 전송하는 함수
+  const makeSentence = () => {
+    sentence = document.getElementById("inputbox").value;
+    selectedItems.push(sentence);
+    console.log(selectedItems);
+  };
+
   const sendSelectedItems = () => {
-    // 선택된 아이템을 서버로 전송
-    console.log(selectedItems.toString());
+    load(); // 로딩 시작
     var accessToken = localStorage.getItem("token");
     axios({
       method: "POST",
       url: "http://15.165.131.15:8080/api/styling/words",
+      
       data: {
         inputs: selectedItems.toString()
       },
@@ -46,13 +59,15 @@ function ListPage() {
         "accept": "*/*",
         Authorization: `Bearer ${accessToken}`
       }
-    }).then(() => {
-      Loading();
     }).then((res) => {
       console.log("Selected items sent successfully:", res);
-      console.log(res.data.data[0].image);
+      console.log(res.data.data);
+      setUrl(res.data.data);
+      loaded();// 로딩 종료
+      navigate('/result'); // 결과 페이지로 이동
     }).catch((err) => {
       console.error("Error sending selected items:", err);
+      loaded();// 로딩 종료
     });
   };
 
@@ -70,7 +85,7 @@ function ListPage() {
                 src="img/keyword (1).png"
                 alt="pink, cherry blossom, spring, flower"
                 script="봄 스타일 추천"
-                onChange={() => handleCheckboxChange('spring')}
+                onChange={() => handleCheckboxChange('op1')}
               />
               <RecommendItem
                 id="op2"
@@ -78,7 +93,7 @@ function ListPage() {
                 src="img/keyword (2).png"
                 alt="Product 2"
                 script="스트릿"
-                onChange={() => handleCheckboxChange('street')}
+                onChange={() => handleCheckboxChange('op2')}
               />
               <RecommendItem
                 id="op3"
@@ -86,7 +101,7 @@ function ListPage() {
                 src="img/keyword (3).png"
                 alt="Product 3"
                 script="아메카지"
-                onChange={() => handleCheckboxChange('amekaji')}
+                onChange={() => handleCheckboxChange('op3')}
               />
             </tr>
             <tr>
@@ -96,7 +111,7 @@ function ListPage() {
                 src="img/keyword (4).png"
                 alt="Product 4"
                 script="스포티"
-                onChange={() => handleCheckboxChange('sporty')}
+                onChange={() => handleCheckboxChange('op4')}
               />
               <RecommendItem
                 id="op5"
@@ -104,7 +119,7 @@ function ListPage() {
                 src="img/keyword (5).png"
                 alt="Product 5"
                 script="청량한 여름옷"
-                onChange={() => handleCheckboxChange('vacance')}
+                onChange={() => handleCheckboxChange('op5')}
               />
               <RecommendItem
                 id="op6"
@@ -112,7 +127,7 @@ function ListPage() {
                 src="img/keyword (6).png"
                 alt="Product 6"
                 script="럭비셔츠"
-                onChange={() => handleCheckboxChange('rugby stripe')}
+                onChange={() => handleCheckboxChange('op6')}
               />
             </tr>
             <tr>
@@ -122,7 +137,7 @@ function ListPage() {
                 src="img/keyword (7).png"
                 alt="Product 7"
                 script="톤다운"
-                onChange={() => handleCheckboxChange('natural')}
+                onChange={() => handleCheckboxChange('op7')}
               />
               <RecommendItem
                 id="op8"
@@ -130,7 +145,7 @@ function ListPage() {
                 src="img/keyword (8).png"
                 alt="Product 8"
                 script="MZ 오피스"
-                onChange={() => handleCheckboxChange('office')}
+                onChange={() => handleCheckboxChange('op8')}
               />
               <RecommendItem
                 id="op9"
@@ -138,13 +153,16 @@ function ListPage() {
                 src="img/keyword (9).png"
                 alt="Product 9"
                 script="데일리 캐주얼"
-                onChange={() => handleCheckboxChange('daily casual')}
+                onChange={() => handleCheckboxChange('op9')}
               />
             </tr>
           </tbody>
         </table>
-        <div><input type="button" value="> > > SKIP" id="nextButton" className="skipbutton" onClick={() => navigate('/prompt')} /></div>
+        <div className="prompt"> Or..You can type it ! </div>
+        <textarea placeholder="Type your keyword" type="input" id="inputbox" className="inputbox" />
+        <div><input type="button" value="keyword add" id="addButton" className="addbutton" onClick={makeSentence} /></div>
         <div><input type="button" value="> > > NEXT" id="nextButton" className="howtobutton" onClick={sendSelectedItems} /></div>
+        {loading && navigate('/Loading')} {/* 로딩 중일 때만 로딩 화면 표시 */}
       </form>
     </div>
   );

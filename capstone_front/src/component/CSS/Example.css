@@ -1,8 +1,4 @@
-.howto {
-    position: relative;
-}
-
-.howto_2 {
+.howto_2{
     font-size: large;
     font-weight: bold;
     padding: 20px;
@@ -12,7 +8,7 @@ h2 {
     padding-bottom: 50px;
 }
 
-.Display {
+.Display{
     position: relative;
     justify-content: center;
     align-items: center;
@@ -20,13 +16,13 @@ h2 {
 }
 
 .howtotitle {
-    position: relative;
+    position: static;
     font-Family: 'Moirai One';
     color: #840418;
     font-Size: 40pt;
     font-Weight: bold;
     text-Align: center;
-    margin-top: 30%;
+    margin-top: 66%;
 }
 
 .howtobutton {
