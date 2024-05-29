@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import Toolbar from "../ui/Toolbar";
 import RecommendItem from "../ui/RecommendItem";
 import { useLoad } from "../controller/LoadingContext";
+import {useUrl} from "../controller/SetImageContext";
 
 function ListPage() {
   const navigate = useNavigate();
   const [selectedItems, setSelectedItems] = useState([]);
   const { loading, load, loaded } = useLoad();
+  const { setUrl } = useUrl(); 
   var sentence=" ";
   
 
@@ -48,8 +50,9 @@ function ListPage() {
     axios({
       method: "POST",
       url: "http://15.165.131.15:8080/api/styling/words",
+      
       data: {
-        words: selectedItems.toString()
+        inputs: selectedItems.toString()
       },
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +62,7 @@ function ListPage() {
     }).then((res) => {
       console.log("Selected items sent successfully:", res);
       console.log(res.data.data);
-
+      setUrl(res.data.data);
       loaded();// 로딩 종료
       navigate('/result'); // 결과 페이지로 이동
     }).catch((err) => {
