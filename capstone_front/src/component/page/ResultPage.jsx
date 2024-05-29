@@ -13,7 +13,6 @@ function ResultPage() {
         const titleElement = document.getElementsByTagName('title')[0];
         titleElement.innerHTML = `Result`;
     }, []);
-    var src = "";
 
     const { imageUrl,setUrl } = useUrl();
 
@@ -21,23 +20,27 @@ function ResultPage() {
 
     //googlelens api 호출
     const showproduct = () => {
-        axios.defaults.baseURL = "http://15.165.131.15:8080/";
-        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+        var accessToken = localStorage.getItem("token");
         axios({
             method: "POST",
-            url: "api/recommendation",
+            url: "http://15.165.131.15:8080/api/recommendations",
             data: {
-              imgUrl: src
+              imgUrl: imageUrl
             },
             headers: {
               "Content-Type": "application/json",
               "accept": "*/*",
+              Authorization: `Bearer ${accessToken}`
             }
-        }).then((response) => {
-            console.log(response.data)
-        }).then(() => {
+        }).then((res) => {
+            console.log(res.data.data.search_metadata)
+            const resUrl = res.data.data.search_metadata.prettify_html_file;
+            window.open(resUrl);
             
-        })
+        }).catch((err) => {
+            console.error("Error sending selected items:", err);
+            
+        });
     }
 
     return (
