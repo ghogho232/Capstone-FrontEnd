@@ -119,7 +119,7 @@ function ProfilePage() {
                 </tr>
                 <div id="changepassword" style={{ display: "none", border: "true" }}>
                     <tr>
-                        <th>변경할 비밀번호 :</th> <th><input type="text" size={20} id="requestpassword" /></th>
+                        <th>변경할 비밀번호 :</th> <th><input type="password" size={20} id="requestpassword" /></th>
                         <input type="button" value="변경 완료" id="changepw" className="but1" onClick={changepw} />
                     </tr>
                 </div>

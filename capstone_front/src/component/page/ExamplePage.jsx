@@ -8,6 +8,10 @@ import axios from 'axios';
 import FileInput from "../ui/FileInput";
 
 function ExamplePage() {
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName('title')[0];
+    titleElement.innerHTML = `Example`;
+}, []);
   const navigate = useNavigate();
   var btnclick = 0;
   var imageData = [{
