@@ -42,6 +42,7 @@ function ListPage() {
     sentence = document.getElementById("inputbox").value;
     selectedItems.push(sentence);
     console.log(selectedItems);
+    alert("키워드가 추가되었습니다.");
   };
 
   const sendSelectedItems = () => {
@@ -144,7 +145,7 @@ function ListPage() {
                 htmlFor="op8"
                 src="img/keyword (8).png"
                 alt="Product 8"
-                script="MZ 오피스"
+                script="MZ오피스"
                 onChange={() => handleCheckboxChange('op8')}
               />
               <RecommendItem
@@ -159,9 +160,10 @@ function ListPage() {
           </tbody>
         </table>
         <div className="prompt"> Or..You can type it ! </div>
-        <textarea placeholder="Type your keyword" type="input" id="inputbox" className="inputbox" />
+        <h4>ex. </h4>
+        <textarea placeholder="마음에 드는 추천이 없다면, 원하는 스타일을 마음껏 적어보세요!" type="input" id="inputbox" className="inputbox" />
         <div><input type="button" value="keyword add" id="addButton" className="addbutton" onClick={makeSentence} /></div>
-        <div><input type="button" value="> > > NEXT" id="nextButton" className="howtobutton" onClick={sendSelectedItems} /></div>
+        <div><input type="button" value=">> NEXT" id="nextButton" className="howtobutton" onClick={sendSelectedItems} /></div>
         {loading && navigate('/Loading')} {/* 로딩 중일 때만 로딩 화면 표시 */}
       </form>
     </div>

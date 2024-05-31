@@ -134,7 +134,7 @@ function ProfilePage() {
     return (
         <div>
             <Toolbar />
-            <h1>MY PROFILE</h1>
+            <h1 style={{marginBottom:"0"}}>MY PROFILE</h1>
             <table id="this" className="profile">
                 <tr>
                     <th className="email">이메일 :</th> <th style={{ fontStyle: "italic", fontSize: "16pt" }}>{email}</th>

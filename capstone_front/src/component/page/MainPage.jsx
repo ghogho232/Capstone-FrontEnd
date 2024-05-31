@@ -16,33 +16,27 @@ function MainPage(props) {
     return (
         <div>
             <Toolbar />
-           
-            <h1 className="title" style={{ fontSize: "50pt", margin: 0, padding: 0, paddingTop: 400 }}> CLOTHZ </h1>
-                <h2 style={{ fontSize: "15pt", color: "#840418", fontFamily: "" }}>Try fancy, get easy!</h2>
-                <p>ClothZ서비스의 간략한 소개</p>
-                <p>
-                    메인 이미지 수정, 백과 연동 후 실제 실행 화면과 함께 서비스 설명 추가
-                </p>
-            <div style={{ alignContent: "space-between" }}>
-                <Button
-                    title='temp'
-                    onClick={() => {
-                        navigate('/result');
-                    }}
-                    className='recommend'
-                    style={{ padding: "30px", fontSize: "30pt", alignItems: "left" }}
-                />
-
-                <Button
-                    title='스타일 추천받기'
-                    onClick={() => {
-                        navigate('/example');
-                    }}
-                    className='recommend'
-                    style={{ padding: "30px", fontSize: "30pt" }}
-                />
+            <h1 className="maintitle" style={{ fontSize: "64pt" }}> CLOTHZ </h1>
+            <h2 style={{ fontSize: "16pt", color: "#840418", fontFamily: 'GmarketSansMedium', paddingBottom: "0px" }}>Try fancy, get easy!</h2>
+            <p style={{ fontSize: "14pt" }}>생성형 AI를 이용하여 사용자의 이미지와 원하는 스타일을 합성한 후, 관련 상품을 구매할 수 있는 서비스입니다.</p>
+            <p style={{ paddingBottom: "10px" }}>인공지능을 통해 어떤 옷이든 자유롭게 입어보세요!</p>
+            <h2 style={{ fontSize: "16pt", color: "#840418", fontFamily: 'GmarketSansMedium', paddingBottom: "0px" }}>주요기능</h2>
+            <p> 1. 회원 가입</p>
+            <p> 2. 사용자의 스타일 키워드 입력 해석</p>
+            <p> 3. 사용자의 이미지를 기반으로 입력된 스타일을 합성</p>
+            <p> 4. 최근 유행하는 스타일 추천</p>
+            <p> 5. 이미지와 관련된 상품 구매 가능</p>
+            <Button
+                title='스타일 추천받기'
+                onClick={() => {
+                    navigate('/example');
+                }}
+                className='recommend'
+                style={{ padding: "30px", fontSize: "30pt", fontFamily: 'Cafe24Ssurround' }}
+            />
+            <div style={{position: "absolute", alignItems: "center", paddingLeft:"170px"}}>
+                <Header />
             </div>
-            <Header />
         </div>
     );
 }
