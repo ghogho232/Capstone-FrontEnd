@@ -62,7 +62,7 @@ function LogInPage() {
                 <table id="loginform">
                     <input type="text" id="email" onChange={handleemail} placeholder="Email" />
                     <input type="password" id="pw" onChange={handlepw} placeholder="Password" />
-                    <input type="submit" onClick={LogIN} value="Login" />
+                    <input type="submit" onClick={LogIN} style={{fontFamily: 'GmarketSansMedium'}}value="Login" />
                 </table>
 
                 <div className="sign-up">
@@ -72,7 +72,7 @@ function LogInPage() {
                         onClick={() => {
                             navigate('/RegisterPage');
                         }}
-                        style={{ fontSize: "15pt", backgroundColor: "transparent", color: "black", border: "none", cursor: "pointer" }}
+                        style={{ fontSize: "15pt", backgroundColor: "transparent", color: "black", border: "none", cursor: "pointer", fontFamily: 'GmarketSansMedium' }}
                     />
                 </div>
             </div>

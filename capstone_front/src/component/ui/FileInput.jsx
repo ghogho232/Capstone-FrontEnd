@@ -74,7 +74,7 @@ function UploadButton() {
         title='이미지 업로드'
         className='recommend'
         onClick={handleUpload}
-        style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
+        style={{ padding: "20px", fontSize: "10pt", alignItems: "left", fontFamily: 'GmarketSansMedium' }}
       />
     </div>
   );

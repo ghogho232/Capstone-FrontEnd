@@ -49,9 +49,10 @@ function ResultPage() {
                 title='유사한 상품 보기'
                 onClick={showproduct}
                 className='recommend'
-                style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
+                style={{ padding: "20px", fontSize: "10pt", alignItems: "left", fontFamily: 'GmarketSansMedium'}}
             />
             <div className="productDisplay" id="productDisplay"> </div>
+            <div><input type="button" value="다시하기" className="retrybutton" onClick={() => { navigate('/Listpage'); }} /></div>
             <div><input type="button" value="처음으로" className="howtobutton" onClick={() => { navigate('/'); }} /></div>
         </div>
     );

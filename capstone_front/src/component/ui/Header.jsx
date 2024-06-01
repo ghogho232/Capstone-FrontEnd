@@ -4,39 +4,40 @@ import { Carousel } from "react-responsive-carousel";
 import imageData from "../../data.js"; //이미지 변경은 data.js에서
 import { useNavigate } from 'react-router-dom';
 import Button from "../ui/Button";
-import {useAuth} from "../controller/AuthContext";
+import { useAuth } from "../controller/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate();
   const { isLoggedIn, login, logout } = useAuth();
   const [currentIndex, setCurrentIndex] = useState();
-  
+
   function handleChange(index) {
     setCurrentIndex(index);
   }
+
   const renderSlides = imageData.map(image => (
     <div key={image.alt}>
-      <img height={"450px"} src={image.url} alt={image.alt} />
-
-      <a href={"/RegisterPage"} className="legend" style={{fontStyle:"oblique", fontSize: "10pt", backgroundColor: "#ddd", color:"black", textDecorationLine:"None"}}>{image.label}</a> 
-  </div>
+      <img src={image.url} alt={image.alt} />
+      <a className="legend" style={{ fontStyle: "oblique", fontSize: "11pt", fontFamily: 'GmarketSansMedium', backgroundColor: "#ddd", color: "black", textDecorationLine: "None" }}>{image.label}</a>
+    </div>
   ));
+
   return (
     <div className="DisplayImage">
-        <Carousel
-          showArrows={true}
-          autoPlay={true}
-          infiniteLoop={true}
-          showThumbs={false}
-          showIndicators={true}
-          selectedItem={imageData[currentIndex]}
-          showStatus={false}
-          onChange={handleChange}
-          width={"800px"}
-          >
-          {renderSlides}
-        </Carousel>
-    </div>  
+      <Carousel
+        showArrows={true}
+        autoPlay={true}
+        infiniteLoop={true}
+        showThumbs={false}
+        showIndicators={true}
+        selectedItem={imageData[currentIndex]}
+        showStatus={false}
+        onChange={handleChange}
+        width={"550px"}
+      >
+        {renderSlides}
+      </Carousel>
+    </div>
   );
 };
 

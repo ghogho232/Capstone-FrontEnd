@@ -48,14 +48,14 @@ const Toolbar = () => {
                     onClick={() => {
                         navigate('/');
                     }}
-                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "13pt", "font-weight": "bold" }}
                 />
                 <Button
                     title="로그아웃"
                     onClick={() => {
                         sessionLogout();
                     }}
-                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "15pt" }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "13pt", fontFamily: 'GmarketSansMedium' }}
                 />
                 <Button
                     title=< img src="img/profile.png" alt="Profile" width={40} height={40} />
@@ -75,7 +75,7 @@ const Toolbar = () => {
                     onClick={() => {
                         navigate('/');
                     }}
-                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                    style={{ backgroundColor: "transparent", border: "none", cursor: "pointer", "font-size": "13pt", "font-weight": "bold" }}
                 />
                 <Button
                     title=< img src="img/profile.png" alt="Profile" width={40} height={40} />
