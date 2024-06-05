@@ -46,12 +46,12 @@ function ExamplePage() {
       }).then(() => {
         var imgshow = document.createElement('div');
         imgshow.setAttribute("id", "imgshow");
-        imgshow.setAttribute("style", "position: absolute; justify-content: center;");
+        imgshow.setAttribute("style", "position: absolute; justify-content: center; margin-right: 30%");
         for (var i = 0; i < imageData.length; i++) {
           imgshow.innerHTML += "<img height='200px' src='" + imageData[i].url + "' /> "
             + "<p>" + imageData[i].label + "</p>";
         }
-        imgshow.innerHTML += "<p> 프롬프트는 영어로, 패션 아이템을 자세히 기술할수록 결과가 정확해요. </p>";
+        imgshow.innerHTML += "<p> 프롬프트는 어떤 언어로 작성하든 상관없지만, 패션 아이템을 자세히 기술할수록 결과가 정확해요. </p>";
         imgshow.innerHTML += "<p> 작성이 어려운 사용자들을 위해 추천 스타일을 준비했으니 걱정마세요! </p>";
         imgshow.innerHTML += "<h2> 4. 이제 옆의 버튼을 눌러 스타일 추천을 받아보세요! </h2>";
         document.getElementById("Display").appendChild(imgshow);
@@ -73,9 +73,10 @@ function ExamplePage() {
       <p className="howto_2"> 1. 먼저 로그인해주세요 !</p>
       <Button
         title='로그인 하러가기'
-        onClick={() => {  if (localStorage.getItem("token") === null) { navigate('/LoginPage'); } }}
+        onClick={() => {  if (localStorage.getItem("token") === null) { navigate('/LoginPage');} else alert("이미 로그인 되어있습니다.");
+        }}
         className='recommend'
-        style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
+        style={{ padding: "20px", fontSize: "10pt", alignItems: "left", fontFamily: 'GmarketSansMedium' }}
       />
       <p className="howto_2"> 2. 사용자의 이미지를 등록해주세요 !</p>
       <FileInput />
@@ -84,10 +85,16 @@ function ExamplePage() {
         title='예시 보기'
         onClick={showexample}
         className='recommend'
-        style={{ padding: "20px", fontSize: "10pt", alignItems: "left" }}
+        style={{ padding: "20px", fontSize: "10pt", alignItems: "left", fontFamily: 'GmarketSansMedium' }}
       />
       <div className="Diplay" id="Display"> </div>
-      <div><input type="button" value="> > > NEXT" className="howtobutton" onClick={() => { navigate('/ListPage'); }} /></div>
+      <div><input type="button" value=">> NEXT" className="howtobutton" onClick={() => { 
+        if(localStorage.getItem("token") === null){
+          alert("로그인을 해주세요!");
+          navigate('/LoginPage');
+        }
+        else navigate('/ListPage');
+        }} /></div>
     </div>
   );
 }

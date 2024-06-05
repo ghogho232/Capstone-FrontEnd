@@ -3,7 +3,7 @@
 }
 
 .title {
-    font-Family: 'Moirai One';
+    font-family: 'Cafe24Ssurround';
     color: #840418;
     font-Size: 40pt;
     font-Weight: bold;
@@ -13,7 +13,7 @@
 
 .prompt {
     position: absolute;
-    font-Family: 'Moirai One';
+    font-family: 'Cafe24Ssurround';
     color: #840418;
     font-Size: 40pt;
     font-Weight: bold;
@@ -33,13 +33,21 @@
     white-space: pre-wrap;
     overflow-wrap: break-word;
     align-self: center;
-    margin-top: 260%;
+    margin-top: 270%;
     margin-left: -2%;
     margin-bottom: 10%;
+    font-family: 'GmarketSansMedium';
 }
 
 .inputbox:focus {
     outline: none;
+}
+
+h4 {
+    position: absolute;
+    margin-top: 220%;
+    margin-bottom: 10%;
+    font-family: 'GmarketSansMedium';
 }
 
 .list {
@@ -97,27 +105,10 @@ label:before {
     transform: scale(1);
 }
 
-.nextbutton {
-    /*background-color: #fff;*/
-    position: absolute;
-    top: 1300px;
-    left: 700px;
-    border: none;
-    color: #840418;
-    padding: 10px 20px;
-    font-family: 'Moirai One', cursive;
-    text-align: center;
-    display: inline-block;
-    font-size: 50px;
-    font-weight: bold;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
 .addbutton {
     position: absolute;
     background-color: #840418;
-    top: 1300px;
+    top: 1350px;
     left: 200px;
     color: white;
     border: none;
@@ -126,7 +117,7 @@ label:before {
     display: inline-block;
     font-size: 13pt;
     cursor: pointer;
-    margin-bottom: 20px;
+    font-family: 'Cafe24Ssurround';
 }
 
 :checked+label img {
