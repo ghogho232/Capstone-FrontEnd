@@ -43,6 +43,25 @@
     outline: none;
 }
 
+.prevbutton{
+    border: none;
+    border-radius: 10vh;
+    background-color: #840418;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    font-family: 'Cafe24Ssurround';
+    color: #FFFFFF;
+    font-Size: 32pt;
+    font-Weight: bold;
+    text-Align: center;
+    align-items: right;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    display: flex;
+}
+
 h4 {
     position: absolute;
     margin-top: 220%;
