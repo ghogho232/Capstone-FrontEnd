@@ -160,9 +160,10 @@ function ListPage() {
           </tbody>
         </table>
         <div className="prompt"> Or..You can type it ! </div>
-        <h4>교복, 군복, 정장, 한복 등의 정형화된 복장은 물론, 명품 브랜드나 자신, 또는 분위기에 대한 묘사를 키워드로 적어도 좋아요!</h4>
+        <h4>교복, 군복, 정장, 한복 등의 정형화된 복장은 물론, 명품 브랜드나 분위기, 또는 자기 자신에 대한 묘사를 키워드로 적어도 좋아요!</h4>
         <textarea placeholder="마음에 드는 추천이 없다면, 원하는 스타일을 마음껏 적어보세요!" type="input" id="inputbox" className="inputbox" />
-        <div><input type="button" value="keyword add" id="addButton" className="addbutton" onClick={makeSentence} /></div>
+        <div><input type="button" value="keyword add" id="addButton" className="addbutton" onClick={makeSentence}/></div>
+        <div><input type="button" value="<< PREV" id="prevButton" className="prevbutton" onClick={() => {navigate('/example')}} /></div>
         <div><input type="button" value=">> NEXT" id="nextButton" className="howtobutton" onClick={sendSelectedItems} /></div>
         {loading && navigate('/Loading')} {/* 로딩 중일 때만 로딩 화면 표시 */}
       </form>
